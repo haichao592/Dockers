@@ -8,11 +8,14 @@ PYTORCH_VERSION=1.5.0+cu101
 APEX_COMMIT=1f2aa9156547377a023932a1512752c392d9bbdf
 HYDRA_COMMIT=7edd1aa073672a0681dca0241072fe3b21e08a16
 
+TAG=hczhu/nlp:pytorch${PYTORCH_VERSION}-cuda${CUDA_VERSION}-cudnn${CUDNN_VERSION}-py${PYTHON_VERSION}-ubuntu18.04-runtime
+TAG=`echo $TAG | tr -d '+'`
+
 DOCKER_BUILDKIT=1 docker build \
-    -t hczhu/nlp:pytorch${PYTORCH_VERSION}-cuda${CUDA_VERSION}-cudnn${CUDNN_VERSION}-py${PYTHON_VERSION}-ubuntu18.04-runtime \
-    --build-arg CUDA_VERSION=$CUDA_VERSION \
-    --build-arg CUDNN_VERSION=$CUDNN_VERSION \
-    --build-arg PYTHON_VERSION=$PYTHON_VERSION \
-    --build-arg PYTORCH_VERSION=$PYTORCH_VERSION \
-    --build-arg APEX_COMMIT=$APEX_COMMIT \
-    --build-arg HYDRA_COMMIT=$HYDRA_COMMIT .
+    -t $TAG \
+    --build-arg CUDA_VERSION=${CUDA_VERSION} \
+    --build-arg CUDNN_VERSION=${CUDNN_VERSION} \
+    --build-arg PYTHON_VERSION=${PYTHON_VERSION} \
+    --build-arg PYTORCH_VERSION=${PYTORCH_VERSION} \
+    --build-arg APEX_COMMIT=${APEX_COMMIT} \
+    --build-arg HYDRA_COMMIT=${HYDRA_COMMIT} .
