@@ -25,7 +25,7 @@ ENV PATH /opt/conda/bin:$PATH
 # pytorch
 ARG PYTORCH_VERSION=1.5.0
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir mkl torch==${PYTORCH_VERSION}
+    pip install --no-cache-dir mkl torch==${PYTORCH_VERSION} -f https://download.pytorch.org/whl/torch_stable.html
 
 # apex
 ARG APEX_COMMIT=1f2aa9156547377a023932a1512752c392d9bbdf
