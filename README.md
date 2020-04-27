@@ -37,16 +37,17 @@ docker pull hczhu/nlp:pytorch1.5.0-cuda10.1-cudnn7-py3.7-ubuntu18.04
 ### Run
 
 ```
-docker run --name nlp_gpu -it --rm --ipc=host \
-  -u "$(id -u):$(id -g)" --userns host \ 
+docker run -it --rm --ipc=host \
+  --name nlp_gpu \
+  --user "$(id -u):$(id -g)" --userns host \ 
   --gpus '"device=2,3"' \
   --mount type=bind,source="$(pwd)",target=/workspace \
   --mount type=bind,source=$HOME/data,target=/workspace/data \
   hczhu/nlp:pytorch1.5.0-cuda10.1-cudnn7-py3.7-ubuntu18.04
 ```
 Above command:
- - runs a container named **nlp_gpu**
- - specifys a **non-root user** that works with Docker namespace for manipulating files
+ - runs a container named **nlp_gpu** ready for Multi-GPU program
+ - projects **local user** as a **non-root user** that works with Docker namespace for manipulating files
  - runs with GPU 2 and 3 (local rank), GPUP ranks in container starts from 0
  - mounts local **current directory** to **/workspace** in container
  - mounts local data directory **$HOME/data** to **/workspace/data** (since soft links in local machine cant not be accessed in container, so mount it)
