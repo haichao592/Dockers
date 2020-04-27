@@ -1,8 +1,14 @@
-# Dockers
-This repo holds the Dockerfiles for Dockerhub autobuild.
 
-## Usage
-### Build
+
+## Pull Built Images
+
+Images are available in [DockerHub](https://hub.docker.com/u/hczhu/).
+
+For example:
+```
+docker pull hczhu/nlp:pytorch1.5.0-cuda10.1-cudnn7-py3.7-ubuntu18.04
+```
+## Build Custom Images
 Build a custom image by specifying the Docker build args.
 
 For example:
@@ -10,13 +16,13 @@ For example:
 CUDA_VERSION=10.1
 CUDNN_VERSION=7
 PYTHON_VERSION=3.7
-PYTORCH_VERSION=1.5.0
+PYTORCH_VERSION=1.5.0+cu101
 
 APEX_COMMIT=1f2aa9156547377a023932a1512752c392d9bbdf
 HYDRA_COMMIT=7edd1aa073672a0681dca0241072fe3b21e08a16
 
 DOCKER_BUILDKIT=1 docker build 
-    -t hczhu/nlp:pytorch${PYTORCH_VERSION}-cuda${CUDA_VERSION}-cudnn${CUDNN_VERSION}-py${PYTHON_VERSION}-ubuntu18.04-runtime \
+    -t nlp:pytorch${PYTORCH_VERSION}-cuda${CUDA_VERSION}-cudnn${CUDNN_VERSION}-py${PYTHON_VERSION}-ubuntu18.04-runtime \
     --build-arg CUDA_VERSION=$CUDA_VERSION \
     --build-arg CUDNN_VERSION=$CUDNN_VERSION \
     --build-arg PYTHON_VERSION=$PYTHON_VERSION \
@@ -25,16 +31,7 @@ DOCKER_BUILDKIT=1 docker build
     --build-arg HYDRA_COMMIT=$HYDRA_COMMIT .
 ```
 
-### Pull
-
-Images are available in [DockerHub](https://hub.docker.com/u/hczhu/).
-
-For example:
-```
-docker pull hczhu/nlp:pytorch1.5.0-cuda10.1-cudnn7-py3.7-ubuntu18.04
-```
-
-### Run
+## Run
 
 ```
 docker run -it --rm --ipc=host \
@@ -43,7 +40,7 @@ docker run -it --rm --ipc=host \
   --gpus '"device=2,3"' \
   --mount type=bind,source="$(pwd)",target=/workspace \
   --mount type=bind,source=$HOME/data,target=/workspace/data \
-  hczhu/nlp:pytorch1.5.0-cuda10.1-cudnn7-py3.7-ubuntu18.04
+  nlp:pytorch1.5.0-cuda10.1-cudnn7-py3.7-ubuntu18.04
 ```
 Above command:
  - runs a container named **nlp_gpu** ready for Multi-GPU program
