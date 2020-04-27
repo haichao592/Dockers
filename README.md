@@ -6,6 +6,7 @@ Images are available in [DockerHub](https://hub.docker.com/u/hczhu/).
 
 For example:
 ```
+# Only 2.09GB
 docker pull hczhu/nlp:pytorch1.5.0cu101-cuda10.1-cudnn7-py3.7-ubuntu18.04-runtime
 ```
 ## Build Images
