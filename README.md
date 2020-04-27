@@ -6,12 +6,17 @@ Images are available in [DockerHub](https://hub.docker.com/u/hczhu/).
 
 For example:
 ```
-docker pull hczhu/nlp:pytorch1.5.0-cuda10.1-cudnn7-py3.7-ubuntu18.04
+docker pull hczhu/nlp:pytorch1.5.0cu101-cuda10.1-cudnn7-py3.7-ubuntu18.04-runtime
 ```
-## Build Custom Images
-Build a custom image by specifying the Docker build args.
+## Build Images
+Build with default args:
+```
+git clone https://github.com/haichao592/dockers.git
+cd dockers/pytorch
+DOCKER_BUILDKIT=1 docker build -t nlp:latest .
+```
 
-For example:
+Build a custom image by specifying the Docker build args:
 ```
 CUDA_VERSION=10.1
 CUDNN_VERSION=7
@@ -21,14 +26,17 @@ PYTORCH_VERSION=1.5.0+cu101
 APEX_COMMIT=1f2aa9156547377a023932a1512752c392d9bbdf
 HYDRA_COMMIT=7edd1aa073672a0681dca0241072fe3b21e08a16
 
-DOCKER_BUILDKIT=1 docker build 
-    -t nlp:pytorch${PYTORCH_VERSION}-cuda${CUDA_VERSION}-cudnn${CUDNN_VERSION}-py${PYTHON_VERSION}-ubuntu18.04-runtime \
-    --build-arg CUDA_VERSION=$CUDA_VERSION \
-    --build-arg CUDNN_VERSION=$CUDNN_VERSION \
-    --build-arg PYTHON_VERSION=$PYTHON_VERSION \
-    --build-arg PYTORCH_VERSION=$PYTORCH_VERSION \
-    --build-arg APEX_COMMIT=$APEX_COMMIT \
-    --build-arg HYDRA_COMMIT=$HYDRA_COMMIT .
+TAG=hczhu/nlp:pytorch${PYTORCH_VERSION}-cuda${CUDA_VERSION}-cudnn${CUDNN_VERSION}-py${PYTHON_VERSION}-ubuntu18.04-runtime
+TAG=`echo $TAG | tr -d '+'`
+
+DOCKER_BUILDKIT=1 docker build \
+    -t $TAG \
+    --build-arg CUDA_VERSION=${CUDA_VERSION} \
+    --build-arg CUDNN_VERSION=${CUDNN_VERSION} \
+    --build-arg PYTHON_VERSION=${PYTHON_VERSION} \
+    --build-arg PYTORCH_VERSION=${PYTORCH_VERSION} \
+    --build-arg APEX_COMMIT=${APEX_COMMIT} \
+    --build-arg HYDRA_COMMIT=${HYDRA_COMMIT} .
 ```
 
 ## Run
