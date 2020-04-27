@@ -1,7 +1,52 @@
 # Dockers
 This repo holds the Dockerfiles for Dockerhub autobuild.
 
-One can find Dockerfiles in branches:
-  - [pytorch1.4.0-cuda10.1-cudnn7-py37-ubuntu18.04-runtime](https://github.com/haichao592/dockers/tree/pytorch1.4.0-cuda10.1-cudnn7-py37-ubuntu18.04-runtime)
+## Usage
+### Build
+Build a custom image by specifying the Docker build args.
 
-Images are available [here](https://hub.docker.com/u/hczhu/).
+For example:
+```
+CUDA_VERSION=10.1
+CUDNN_VERSION=7
+PYTHON_VERSION=3.7
+PYTORCH_VERSION=1.5.0
+
+APEX_COMMIT=1f2aa9156547377a023932a1512752c392d9bbdf
+HYDRA_COMMIT=7edd1aa073672a0681dca0241072fe3b21e08a16
+
+DOCKER_BUILDKIT=1 docker build 
+    -t hczhu/nlp:pytorch${PYTORCH_VERSION}-cuda${CUDA_VERSION}-cudnn${CUDNN_VERSION}-py${PYTHON_VERSION}-ubuntu18.04-runtime \
+    --build-arg CUDA_VERSION=$CUDA_VERSION \
+    --build-arg CUDNN_VERSION=$CUDNN_VERSION \
+    --build-arg PYTHON_VERSION=$PYTHON_VERSION \
+    --build-arg PYTORCH_VERSION=$PYTORCH_VERSION \
+    --build-arg APEX_COMMIT=$APEX_COMMIT \
+    --build-arg HYDRA_COMMIT=$HYDRA_COMMIT .
+```
+
+### Pull
+
+Images are available in [DockerHub](https://hub.docker.com/u/hczhu/).
+
+For example:
+```
+docker pull hczhu/nlp:pytorch1.5.0-cuda10.1-cudnn7-py3.7-ubuntu18.04
+```
+
+### Run
+
+```
+docker run --name nlp_gpu -it --rm --ipc=host \
+  -u "$(id -u):$(id -g)" --userns host \ 
+  --gpus '"device=2,3"' \
+  --mount type=bind,source="$(pwd)",target=/workspace \
+  --mount type=bind,source=$HOME/data,target=/workspace/data \
+  hczhu/nlp:pytorch1.5.0-cuda10.1-cudnn7-py3.7-ubuntu18.04
+```
+Above command:
+ - runs a container named **nlp_gpu**
+ - specifys a **non-root user** that works with Docker namespace for manipulating files
+ - runs with GPU 2 and 3 (local rank), GPUP ranks in container starts from 0
+ - mounts local **current directory** to **/workspace** in container
+ - mounts local data directory **$HOME/data** to **/workspace/data** (since soft links in local machine cant not be accessed in container, so mount it)
