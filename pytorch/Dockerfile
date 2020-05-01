@@ -17,7 +17,7 @@ RUN curl -o ~/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest
      chmod +x ~/miniconda.sh && \
      ~/miniconda.sh -b -p /opt/conda && \
      rm ~/miniconda.sh && \
-     /opt/conda/bin/conda install -y python=$PYTHON_VERSION && \
+     /opt/conda/bin/conda install -y python=$PYTHON_VERSION tqdm tensorboard ipython && \
      /opt/conda/bin/conda clean -ya
 
 ENV PATH /opt/conda/bin:$PATH
@@ -41,10 +41,6 @@ RUN git clone https://github.com/facebookresearch/hydra.git hydra && \
     git reset --hard ${HYDRA_COMMIT} && \
     pip install -v --no-cache-dir .
 
-# requirements.txt
-COPY requirements.txt .
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
 
 FROM nvidia/cuda:${CUDA_VERSION}-cudnn${CUDNN_VERSION}-runtime-ubuntu18.04
 
