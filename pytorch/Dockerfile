@@ -44,6 +44,12 @@ RUN git clone https://github.com/facebookresearch/hydra.git hydra && \
 
 FROM nvidia/cuda:${CUDA_VERSION}-cudnn${CUDNN_VERSION}-runtime-ubuntu18.04
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+         git \
+         curl \
+         ca-certificates && \
+     rm -rf /var/lib/apt/lists/*
+     
 COPY --from=build /opt/conda /opt/conda
 
 ENV PATH /opt/conda/bin:$PATH
