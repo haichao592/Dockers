@@ -7,7 +7,7 @@ ARG HYDRA=1.0.0rc1
 ARG DGL=0.4.3.post2
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir --upgrade transformers==${TRANSFORMERS} \
-                                         nlp==${NLP} && \
+                                         nlp==${NLP} \
                                          pytorch-lightning==${LIGHTNING} \
                                          hydra-core==${HYDRA} \
                                          tensorboard \
