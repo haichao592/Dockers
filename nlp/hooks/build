@@ -1,0 +1,17 @@
+#!/bin/sh
+
+TRANSFORMERS=2.11.0
+NLP=0.3.0
+LIGHTNING=0.8.1
+HYDRA=1.0.0rc1
+DGL=0.4.3.post2
+
+TAG=hczhu/nlp:transformers${TRANSFORMERS}-nlp${NLP}-pl${LIGHTNING}-hydra${HYDRA}-dgl${DGL}
+
+DOCKER_BUILDKIT=1 docker build \
+    -t $TAG \
+    --build-arg TRANSFORMERS=${TRANSFORMERS} \
+    --build-arg NLP=${NLP} \
+    --build-arg LIGHTNING=${LIGHTNING} \
+    --build-arg HYDRA=${HYDRA} \
+    --build-arg DGL=${DGL} .
