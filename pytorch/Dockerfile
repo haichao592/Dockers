@@ -34,13 +34,6 @@ RUN git clone https://github.com/NVIDIA/apex.git apex && \
     git reset --hard ${APEX_COMMIT} && \
     pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" . 
 
-# hydra
-ARG HYDRA_COMMIT=7edd1aa073672a0681dca0241072fe3b21e08a16
-RUN git clone https://github.com/facebookresearch/hydra.git hydra && \
-    cd hydra && \
-    git reset --hard ${HYDRA_COMMIT} && \
-    pip install -v --no-cache-dir .
-
 
 FROM nvidia/cuda:${CUDA_VERSION}-cudnn${CUDNN_VERSION}-runtime-ubuntu18.04
 
