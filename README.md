@@ -6,8 +6,11 @@ Images are available in [DockerHub](https://hub.docker.com/u/hczhu/).
 
 For example:
 ```
-# Basic NLP runtime with minimum dependency, amp enabled
-docker pull hczhu/nlp:pytorch1.5.0cu101-cuda10.1-cudnn7-py3.7-ubuntu18.04-runtime
+# Basic Pytorch runtime with minimum dependency, AMP enabled
+docker pull hczhu/pytorch:pytorch1.5.1cu101-cuda10.1-cudnn7-py3.7-ubuntu18.04-runtime
+
+# Selected libraries from Pytorch Ecosystem for NLP
+docker pull hczhu/nlp:nlp0.3.0-transformers2.11.0-pl0.8.1-hydra1.0.0rc1-dgl0.4.3.post2
 ```
 ## Build Images
 Build with default args:
@@ -22,12 +25,11 @@ Build a custom image by specifying the Docker build args:
 CUDA_VERSION=10.1
 CUDNN_VERSION=7
 PYTHON_VERSION=3.7
-PYTORCH_VERSION=1.5.0+cu101
+PYTORCH_VERSION=1.5.1+cu101
 
 APEX_COMMIT=1f2aa9156547377a023932a1512752c392d9bbdf
-HYDRA_COMMIT=7edd1aa073672a0681dca0241072fe3b21e08a16
 
-TAG=hczhu/nlp:pytorch${PYTORCH_VERSION}-cuda${CUDA_VERSION}-cudnn${CUDNN_VERSION}-py${PYTHON_VERSION}-ubuntu18.04-runtime
+TAG=hczhu/pytorch:pytorch${PYTORCH_VERSION}-cuda${CUDA_VERSION}-cudnn${CUDNN_VERSION}-py${PYTHON_VERSION}-ubuntu18.04-runtime
 TAG=`echo $TAG | tr -d '+'`
 
 DOCKER_BUILDKIT=1 docker build \
@@ -49,7 +51,7 @@ docker run -it --rm --ipc=host \
   --gpus '"device=2,3"' \
   --mount type=bind,source="$(pwd)",target=/workspace \
   --mount type=bind,source=$HOME/data,target=/workspace/data \
-  nlp:pytorch1.5.0-cuda10.1-cudnn7-py3.7-ubuntu18.04
+  pytorch:pytorch1.5.1-cuda10.1-cudnn7-py3.7-ubuntu18.04
 ```
 Above command:
  - runs a container named **nlp_gpu** ready for Multi-GPU program
