@@ -23,7 +23,7 @@ RUN curl -o ~/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest
 ENV PATH /opt/conda/bin:$PATH
 
 # pytorch
-ARG PYTORCH_VERSION=1.5.0
+ARG PYTORCH_VERSION=1.5.1
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir mkl torch==${PYTORCH_VERSION} -f https://download.pytorch.org/whl/torch_stable.html
 
