@@ -10,13 +10,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
                                          nlp==${NLP} \
                                          pytorch-lightning==${LIGHTNING} \
                                          hydra-core==${HYDRA} \
-                                         tensorboard \
-                                         comet-ml \
-                                         plotly \
-                                         networkx \
-                                         dgl-cu101==${DGL} \
-                                         plotly \
-                                         matplotlib && \
+                                         dgl-cu101==${DGL} && \
     pip install --no-cache-dir --upgrade hydra-nevergrad-sweeper --pre
 
 
