@@ -10,7 +10,6 @@ TAG=hczhu/pytorch:pytorch${PYTORCH_VERSION}-cuda${CUDA_VERSION}-cudnn${CUDNN_VER
 TAG=`echo $TAG | tr -d '+'`
 
 
-APEX_COMMIT=44532b30a4fad442f00635a0f4c8f241b06c2315
 DOCKER_BUILDKIT=1 docker build \
     -t $TAG \
     --build-arg CUDA_VERSION=${CUDA_VERSION} \
