@@ -15,3 +15,6 @@ DOCKER_BUILDKIT=1 docker build \
     --build-arg LIGHTNING=${LIGHTNING} \
     --build-arg HYDRA=${HYDRA} \
     --build-arg DGL=${DGL} .
+
+docker push ${TAG}
+docker tag ${TAG} hczhu/nlp:latest
