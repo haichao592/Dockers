@@ -1,4 +1,4 @@
-FROM hczhu/pytorch:pytorch1.5.1cu101-cuda10.1-cudnn7-py3.7-ubuntu18.04-runtime
+FROM hczhu/pytorch:pytorch1.6.0cu101-cuda10.1-cudnn7-py3.7-ubuntu18.04-runtime
 
 ARG TRANSFORMERS=2.11.0
 ARG NLP=0.3.0
