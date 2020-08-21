@@ -18,4 +18,4 @@ DOCKER_BUILDKIT=1 docker build \
     --build-arg PYTORCH_VERSION=${PYTORCH_VERSION} .
 
 docker push ${TAG}
-docker tag ${TAG} latest
+docker tag ${TAG} hczhu/pytorch:latest
