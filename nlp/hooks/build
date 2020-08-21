@@ -2,8 +2,8 @@
 
 TRANSFORMERS=2.11.0
 NLP=0.3.0
-LIGHTNING=0.8.1
-HYDRA=1.0.0rc1
+LIGHTNING=0.9.0
+HYDRA=0.11.3
 DGL=0.4.3.post2
 
 TAG=hczhu/nlp:nlp${NLP}-transformers${TRANSFORMERS}-pl${LIGHTNING}-hydra${HYDRA}-dgl${DGL}
