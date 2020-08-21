@@ -22,6 +22,8 @@ DOCKER_BUILDKIT=1 docker build -t nlp:latest .
 
 Build a custom image by specifying the Docker build args:
 ```
+#!/bin/bash
+
 CUDA_VERSION=10.1
 CUDNN_VERSION=7
 PYTHON_VERSION=3.7
