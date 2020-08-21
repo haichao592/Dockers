@@ -1,4 +1,4 @@
-FROM hczhu/nlp:nlp0.3.0-transformers2.11.0-pl0.8.1-hydra1.0.0rc1-dgl0.4.3.post2
+FROM hczhu/nlp:nlp0.3.0-transformers2.11.0-pl0.9.0-hydra0.11.3-dgl0.4.3.post2
 
 RUN apt-get update && apt-get install -y --no-install-recommends build-essential cmake libxml-parser-perl
 
