@@ -1,20 +1,18 @@
 #!/bin/sh
 
-TRANSFORMERS=2.11.0
-NLP=0.3.0
+TRANSFORMERS=3.1.0
+DATASETS=1.0.2
 LIGHTNING=0.9.0
-HYDRA=0.11.3
-DGL=0.4.3.post2
+HYDRA=1.0.2
 
-TAG=hczhu/nlp:nlp${NLP}-transformers${TRANSFORMERS}-pl${LIGHTNING}-hydra${HYDRA}-dgl${DGL}
+TAG=hczhu/nlp:transformers${TRANSFORMERS}-datasets${DATASETS}-pl${LIGHTNING}-hydra${HYDRA}
 
 DOCKER_BUILDKIT=1 docker build \
     -t $TAG \
     --build-arg TRANSFORMERS=${TRANSFORMERS} \
-    --build-arg NLP=${NLP} \
+    --build-arg DATASETS=${DATASETS} \
     --build-arg LIGHTNING=${LIGHTNING} \
-    --build-arg HYDRA=${HYDRA} \
-    --build-arg DGL=${DGL} .
+    --build-arg HYDRA=${HYDRA} .
 
 docker push ${TAG}
 docker tag ${TAG} hczhu/nlp:latest
