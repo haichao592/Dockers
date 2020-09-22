@@ -1,12 +1,6 @@
 #!/bin/sh
 
-TRANSFORMERS=2.11.0
-NLP=0.3.0
-LIGHTNING=0.9.0
-HYDRA=0.11.3
-DGL=0.4.3.post2
-
-TAG=hczhu/summarization:nlp${NLP}-transformers${TRANSFORMERS}-pl${LIGHTNING}-hydra${HYDRA}-dgl${DGL}
+TAG=hczhu/summarization:transformers3.1.0-datasets1.0.2-pl0.9.0-hydra1.0.2
 
 DOCKER_BUILDKIT=1 docker build -t $TAG .
 
