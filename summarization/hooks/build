@@ -1,8 +1,10 @@
 #!/bin/sh
 
-TAG=hczhu/summarization:transformers3.1.0-datasets1.0.2-pl0.9.0-hydra1.0.2
+BASE_REPO=hczhu/nlp
+BASE_TAG=transformers3.1.0-datasets1.0.2-pl0.9.0-hydra1.0.2
+TAG=hczhu/summarization:${BASE_TAG}
 
-DOCKER_BUILDKIT=1 docker build -t $TAG .
+DOCKER_BUILDKIT=1 docker build -t $TAG --build-arg BASE=${BASE_REPO}:${BASE_TAG} .
 
 docker push ${TAG}
 docker tag ${TAG} hczhu/summarization:latest
