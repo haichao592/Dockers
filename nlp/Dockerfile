@@ -12,7 +12,8 @@ RUN pip install --no-cache-dir --upgrade pip && \
                                          pytorch-lightning==${LIGHTNING} \
                                          hydra-core==${HYDRA} && \
     pip install --no-cache-dir --upgrade hydra-nevergrad-sweeper --pre && \
-    conda install -c pytorch faiss-gpu==${FAISS}
+    conda install -c pytorch faiss-gpu==${FAISS} && \
+    conda clean -ya
 
 
 WORKDIR /workspace
