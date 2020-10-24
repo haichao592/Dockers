@@ -2,7 +2,7 @@
 
 BASE_REPO=hczhu/nlp
 BASE_TAG=transformers3.3.1-datasets1.1.2-pl1.0.2-hydra1.0.3-faiss1.6.3
-TAG=${BASE_REPO}:${BASE_TAG}-devel
+TAG=${BASE_REPO}:${BASE_TAG}-ssh
 
 DOCKER_BUILDKIT=1 docker build -t $TAG --build-arg BASE=${BASE_REPO}:${BASE_TAG} .
 
