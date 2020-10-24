@@ -7,3 +7,4 @@ TAG=${BASE_REPO}:${BASE_TAG}-ssh
 DOCKER_BUILDKIT=1 docker build -t $TAG --build-arg BASE=${BASE_REPO}:${BASE_TAG} .
 
 docker push ${TAG}
+docker tag ${TAG} hczhu/ssh:latest
