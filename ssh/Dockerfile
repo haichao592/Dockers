@@ -5,4 +5,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
          openssh-server
 
 WORKDIR /workspace
-CMD ["/bin/bash"]
+CMD ["/usr/sbin/sshd", "-D"]
