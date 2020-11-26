@@ -8,7 +8,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
          cmake \
          git \
          curl \
-         openssh-server \
          ca-certificates && \
      rm -rf /var/lib/apt/lists/*
 
@@ -36,8 +35,11 @@ RUN pip install --no-cache-dir tqdm tensorboard jupyter ipython psutil matplotli
 FROM nvidia/cuda:${CUDA_VERSION}-cudnn${CUDNN_VERSION}-runtime-ubuntu18.04
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+         build-essential \
+         cmake \
          git \
          curl \
+         openssh-server \
          ca-certificates && \
      rm -rf /var/lib/apt/lists/*
      
