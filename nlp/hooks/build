@@ -11,7 +11,7 @@ TAG=hczhu/nlp:transformers${TRANSFORMERS}-datasets${DATASETS}-pl${LIGHTNING}-hyd
 
 DOCKER_BUILDKIT=1 docker build \
     -t $TAG \
-    --build-arg BASE=${BASE}
+    --build-arg BASE=${BASE} \
     --build-arg TRANSFORMERS=${TRANSFORMERS} \
     --build-arg DATASETS=${DATASETS} \
     --build-arg LIGHTNING=${LIGHTNING} \
