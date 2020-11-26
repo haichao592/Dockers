@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
          cmake \
          git \
          curl \
+         openssh-server \
          ca-certificates && \
      rm -rf /var/lib/apt/lists/*
 
@@ -25,11 +26,11 @@ ENV PATH /opt/conda/bin:$PATH
 # pytorch
 ARG PYTORCH_VERSION=1.5.1
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir mkl torch==${PYTORCH_VERSION} -f https://download.pytorch.org/whl/torch_stable.html
+    pip install --no-cache-dir torch==${PYTORCH_VERSION} -f https://download.pytorch.org/whl/torch_stable.html
 
 
 # essential libs
-RUN pip install --no-cache-dir tqdm tensorboard scikit-learn jupyter ipython psutil comet-ml matplotlib plotly networkx
+RUN pip install --no-cache-dir tqdm tensorboard jupyter ipython psutil matplotlib
 
 
 FROM nvidia/cuda:${CUDA_VERSION}-cudnn${CUDNN_VERSION}-runtime-ubuntu18.04
