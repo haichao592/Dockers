@@ -10,7 +10,8 @@ RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir --upgrade transformers==${TRANSFORMERS} \
                                          datasets==${DATASETS} \
                                          pytorch-lightning==${LIGHTNING} \
-                                         hydra-core==${HYDRA} && \
+                                         hydra-core==${HYDRA} \
+                                         optuna && \
     pip install --no-cache-dir --upgrade hydra-nevergrad-sweeper --pre && \
     conda install -c pytorch faiss-gpu==${FAISS} && \
     conda clean -ya
