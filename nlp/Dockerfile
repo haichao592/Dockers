@@ -7,7 +7,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
                                          pytorch-lightning \
                                          hydra-core \
                                          optuna && \
-    pip install --no-cache-dir --upgrade hydra-nevergrad-sweeper --pre && \
+    pip install --no-cache-dir --upgrade hydra-nevergrad-sweeper hydra-joblib-launcher --pre && \
     conda install -c pytorch faiss-gpu cudatoolkit=10.1 && \
     conda clean -ya
 
