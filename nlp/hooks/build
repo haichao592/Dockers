@@ -1,11 +1,11 @@
 #!/bin/sh
 
-BASE=hczhu/pytorch:pytorch1.7.0cu110-cuda11.0-cudnn8-py3.7-ubuntu18.04-runtime
+BASE=hczhu/pytorch:pytorch1.7.0cu101-cuda10.1-cudnn8-py3.7-ubuntu18.04-runtime
 TRANSFORMERS=3.5.1
 DATASETS=1.1.3
 LIGHTNING=1.0.8
 HYDRA=1.0.4
-FAISS=1.6.4
+FAISS=1.6.5
 
 TAG=hczhu/nlp:transformers${TRANSFORMERS}-datasets${DATASETS}-pl${LIGHTNING}-hydra${HYDRA}-faiss${FAISS}
 
