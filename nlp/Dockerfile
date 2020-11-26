@@ -1,11 +1,11 @@
 ARG BASE
 FROM ${BASE}
 
-ARG TRANSFORMERS=3.1.0
-ARG DATASETS=1.0.2
-ARG LIGHTNING=0.9.0
-ARG HYDRA=1.0.2
-ARG FAISS=1.6.3
+ARG TRANSFORMERS
+ARG DATASETS
+ARG LIGHTNING
+ARG HYDRA
+ARG FAISS
 
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir --upgrade transformers==${TRANSFORMERS} \
@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
                                          hydra-core==${HYDRA} \
                                          optuna && \
     pip install --no-cache-dir --upgrade hydra-nevergrad-sweeper --pre && \
-    conda install -c pytorch faiss-gpu==${FAISS} && \
+    conda install -c pytorch faiss-gpu==${FAISS} cudatoolkit=10.1 && \
     conda clean -ya
 
 
