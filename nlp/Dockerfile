@@ -1,4 +1,5 @@
-FROM hczhu/pytorch:pytorch1.6.0cu101-cuda10.1-cudnn7-py3.7-ubuntu18.04-runtime
+ARG BASE
+FROM ${BASE}
 
 ARG TRANSFORMERS=3.1.0
 ARG DATASETS=1.0.2
