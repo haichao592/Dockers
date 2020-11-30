@@ -1,4 +1,4 @@
-ARG BASE=hczhu/nlp:transformers3.1.0-datasets1.0.2-pl0.9.0-hydra1.0.2
+ARG BASE=hczhu/nlp:latest
 FROM ${BASE}
 
 RUN apt-get update && apt-get install -y --no-install-recommends build-essential cmake libxml-parser-perl
