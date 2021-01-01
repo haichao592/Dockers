@@ -1,7 +1,7 @@
 #!/bin/sh
 
 BASE_REPO=hczhu/nlp
-BASE_TAG=20201126
+BASE_TAG=latest
 TAG=hczhu/summarization:${BASE_TAG}
 
 DOCKER_BUILDKIT=1 docker build -t $TAG --build-arg BASE=${BASE_REPO}:${BASE_TAG} .
