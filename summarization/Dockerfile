@@ -15,5 +15,7 @@ RUN git clone https://github.com/haichao592/pyrouge && \
     
 ENV ROUGE_EVAL_HOME /opt/.pyrouge/RELEASE-1.5.5/data
 
+RUN pip install --no-cache-dir --upgrade dgl
+
 WORKDIR /workspace
 CMD ["/bin/bash"]
