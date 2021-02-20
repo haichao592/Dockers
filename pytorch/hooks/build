@@ -4,7 +4,7 @@ CUDA_VERSION=10.1
 CUDNN_VERSION=8
 PYTHON_VERSION=3.6
 PYTORCH_VERSION=1.7.1+cu101
-APEX=a78ccf0b3e3f7130b3f157732dc8e8e651389922
+APEX_COMMIT=a78ccf0b3e3f7130b3f157732dc8e8e651389922
 
 
 TAG=hczhu/pytorch:pytorch${PYTORCH_VERSION}-cuda${CUDA_VERSION}-cudnn${CUDNN_VERSION}-py${PYTHON_VERSION}-ubuntu18.04-runtime
@@ -16,7 +16,7 @@ DOCKER_BUILDKIT=1 docker build \
     --build-arg CUDA_VERSION=${CUDA_VERSION} \
     --build-arg CUDNN_VERSION=${CUDNN_VERSION} \
     --build-arg PYTHON_VERSION=${PYTHON_VERSION} \
-    --build-arg APEX=${APEX} \
+    --build-arg APEX_COMMIT=${APEX_COMMIT} \
     --build-arg PYTORCH_VERSION=${PYTORCH_VERSION} .
 
 docker push ${TAG}
