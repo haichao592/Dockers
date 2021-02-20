@@ -39,6 +39,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
          cmake \
          git \
          curl \
+         vim \
          openssh-server \
          ca-certificates && \
      rm -rf /var/lib/apt/lists/*
