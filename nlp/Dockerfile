@@ -10,6 +10,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
                                          optuna && \
     pip install --no-cache-dir --upgrade hydra-nevergrad-sweeper hydra-joblib-launcher --pre && \
     conda install -c pytorch faiss-gpu cudatoolkit=10.1 && \
+    conda install -c dglteam dgl-cuda10.1 && \
     conda clean -ya
 
 
