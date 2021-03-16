@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BASE=hczhu/pytorch:pytorch1.7.1cu101-cuda10.1-cudnn8-py3.6-ubuntu18.04-runtime
+BASE=hczhu/pytorch:pytorch1.8.0cu111-cuda11.1-cudnn8-py3.8-ubuntu20.04-runtime
 DATE=$(date "+%Y%m%d")
 
 TAG=hczhu/nlp:${DATE}
