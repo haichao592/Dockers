@@ -1,6 +1,6 @@
 ARG CUDA_VERSION=10.1
 ARG CUDNN_VERSION=7
-FROM nvidia/cuda:${CUDA_VERSION}-cudnn${CUDNN_VERSION}-devel-ubuntu18.04 as build
+FROM nvidia/cuda:${CUDA_VERSION}-cudnn${CUDNN_VERSION}-devel-ubuntu20.04 as build
 
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
