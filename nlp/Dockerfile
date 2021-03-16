@@ -7,13 +7,10 @@ RUN pip install --no-cache-dir --upgrade pip && \
                                          nltk \
                                          spacy \
                                          pytorch-lightning \
-                                         hydra-core \
                                          comet-ml \
-                                         optuna \
-                                         jedi==0.17.2 && \
-    pip install --no-cache-dir --upgrade hydra-nevergrad-sweeper hydra-joblib-launcher --pre && \
-    conda install -c pytorch faiss-gpu cudatoolkit=10.1 && \
-    conda install -c dglteam dgl-cuda10.1 && \
+                                         dgl-cu111 \
+                                         optuna && \
+    conda install -c conda-forge faiss-gpu cudatoolkit=11.1 && \
     conda clean -ya
 
 
