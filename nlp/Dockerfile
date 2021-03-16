@@ -2,11 +2,11 @@ ARG BASE
 FROM ${BASE}
 
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir --upgrade transformers \
+    pip install --no-cache-dir --upgrade transformers==4.3.3 \
                                          datasets \
                                          nltk \
                                          spacy \
-                                         pytorch-lightning \
+                                         pytorch-lightning==1.2.3 \
                                          comet-ml \
                                          dgl-cu111 \
                                          optuna && \
