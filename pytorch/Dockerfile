@@ -37,7 +37,7 @@ RUN git clone https://github.com/NVIDIA/apex.git apex && \
     git reset --hard ${APEX_COMMIT} && \
     pip install -v --disable-pip-version-check --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" .
 
-FROM nvidia/cuda:${CUDA_VERSION}-cudnn${CUDNN_VERSION}-runtime-ubuntu18.04
+FROM nvidia/cuda:${CUDA_VERSION}-cudnn${CUDNN_VERSION}-runtime-ubuntu20.04
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
          build-essential \
