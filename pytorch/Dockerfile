@@ -29,7 +29,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
 
 
 # essential libs
-RUN pip install --no-cache-dir tqdm tensorboard jupyter ipython psutil matplotlib
+RUN pip install --no-cache-dir tqdm tensorboard jupyterlab==2.2.5 ipython psutil matplotlib
 
 ARG APEX_COMMIT=a78ccf0b3e3f7130b3f157732dc8e8e651389922
 RUN git clone https://github.com/NVIDIA/apex.git apex && \
